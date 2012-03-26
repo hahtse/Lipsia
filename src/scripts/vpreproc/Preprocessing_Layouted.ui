@@ -349,6 +349,13 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
+             <widget class="QCheckBox" name="cb_script">
+              <property name="text">
+               <string>Generate shellscript</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="verticalSpacer_2">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -1187,13 +1194,6 @@ p, li { white-space: pre-wrap; }
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="b_start_proc">
-         <property name="text">
-          <string>Start preprocessing</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="b_save_settings">
          <property name="text">
@@ -1201,17 +1201,24 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QPushButton" name="b_exit">
          <property name="text">
           <string>Exit</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
+       <item row="2" column="1">
         <widget class="QPushButton" name="b_load_settings">
          <property name="text">
           <string>Load  Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="b_start_proc">
+         <property name="text">
+          <string>Start preprocessing</string>
          </property>
         </widget>
        </item>
@@ -1250,5 +1257,230 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cb_atlas_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_show_registration_results</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>214</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>376</x>
+     <y>241</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_create_mask</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_show_mask</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>444</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>442</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_high_pass</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_hp_cutoff</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>451</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_low_pass</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_lp_cutoff</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>532</x>
+     <y>416</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_set_repetition</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dsb_repetition_time</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>251</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_rigid_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_max_iterations_p1</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>138</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>128</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_rigid_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_prealign_images</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>94</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_affine_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_max_iterations_p2</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_deformable_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_max_iterations_p3</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_deformable_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sb_max_deformation</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_atlas_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_show_registration_results</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_create_mask</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_show_mask</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>294</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_rigid_registration</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_prealign_images</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>166</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>b_exit</sender>
+   <signal>clicked()</signal>
+   <receiver>Fenster</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>721</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
