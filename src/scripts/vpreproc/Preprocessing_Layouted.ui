@@ -1345,12 +1345,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>122</y>
+     <x>139</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>161</y>
+     <x>129</x>
+     <y>540</y>
     </hint>
    </hints>
   </connection>
@@ -1361,12 +1361,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>122</y>
+     <x>92</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>94</x>
-     <y>192</y>
+     <x>95</x>
+     <y>571</y>
     </hint>
    </hints>
   </connection>
@@ -1377,12 +1377,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>122</y>
+     <x>363</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>170</x>
-     <y>161</y>
+     <x>363</x>
+     <y>540</y>
     </hint>
    </hints>
   </connection>
@@ -1393,12 +1393,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>210</x>
-     <y>122</y>
+     <x>603</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>170</x>
-     <y>161</y>
+     <x>563</x>
+     <y>540</y>
     </hint>
    </hints>
   </connection>
@@ -1409,12 +1409,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>210</x>
-     <y>122</y>
+     <x>603</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>170</x>
-     <y>211</y>
+     <x>563</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -1457,12 +1457,12 @@ p, li { white-space: pre-wrap; }
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>166</x>
-     <y>122</y>
+     <x>167</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>160</x>
-     <y>192</y>
+     <x>161</x>
+     <y>571</y>
     </hint>
    </hints>
   </connection>
@@ -1473,12 +1473,12 @@ p, li { white-space: pre-wrap; }
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>180</x>
-     <y>721</y>
+     <x>197</x>
+     <y>708</y>
     </hint>
     <hint type="destinationlabel">
-     <x>7</x>
-     <y>68</y>
+     <x>302</x>
+     <y>32</y>
     </hint>
    </hints>
   </connection>

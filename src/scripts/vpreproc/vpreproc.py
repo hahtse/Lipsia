@@ -65,6 +65,7 @@ class PreProc(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.comboBox_help, QtCore.SIGNAL("currentIndexChanged(int)"), self.show_help )
         QtCore.QObject.connect(self.ui.cb_atlas_registration, QtCore.SIGNAL("clicked()"), self.change_atlas_reg)
         QtCore.QObject.connect(self.ui.le_directory, QtCore.SIGNAL("editingFinishes()"), self.change_output_directory)
+        QtCore.QObject.connect(self.ui.b_exit, QtCore.SIGNAL("clicked()"), self.exit_program)
 
 #Einzelnes File hinzufuegen
     def add_data_to_list(self):
@@ -73,7 +74,7 @@ class PreProc(QtGui.QMainWindow):
             for fileName in dataList:
                 self.ui.lw_input_files.addItem(fileName)
                 self.ui.lw_functional_anatomical_image.addItem(fileName + " -> ")
-                self.myFileList.append(fileName)
+                self.myFileList.append(str(fileName))
 
 #Verzeichnis hinzufuegen
     def add_dir_to_list(self):
@@ -175,8 +176,9 @@ class PreProc(QtGui.QMainWindow):
         config.set('Registration Settings', 'Output resolution', self.ui.le_output_resolution.text())
 
         config.add_section('Files')
-        config.set('Files', 'FileList', self.myFileList)
-        print self.myFileList
+        config.set('Files', 'Number', len(self.myFileList))
+        for i in range(0,len(self.myFileList),1):
+            config.set('Files','File ' + str(i), self.myFileList[i])
 
         configFileName = QtGui.QFileDialog.getSaveFileName(self, "Save settings to file", self.homePath, ("*.lpp"))
         regExp = QtCore.QRegExp(QtCore.QString("*.lpp"))
@@ -228,17 +230,16 @@ class PreProc(QtGui.QMainWindow):
         self.ui.le_directory.setText(config.get('Preprocessing Steps', 'output_directory'))
         self.change_output_directory()
         self.ui.le_prefix.setText(config.get('Preprocessing Steps', 'prefix'))
-        self.myFileList = config.get('Files','FileList')
-        #self.ui.lw_input_files.clear()
-        #self.ui.lw_functional_anatomical_image.clear()
-        #print
-        #print self.myFileList
-        #for fileName in self.myFileList:
-        #    print fileName
-        #    self.ui.lw_input_files.addItem(fileName)
-        #    self.ui.lw_functional_anatomical_image.addItem(fileName + " -> ")
-
-
+        numberOfFiles = config.getint('Files','Number')
+        self.ui.lw_input_files.clear()
+        self.ui.lw_functional_anatomical_image.clear()
+        self.myFileList = []
+        for i in range(0,numberOfFiles,1):
+            filepath = config.get('Files','File ' + str(i))
+            self.myFileList.append(filepath)
+            self.ui.lw_input_files.addItem(filepath)
+            self.ui.lw_functional_anatomical_image.addItem(filepath + " -> ")
+  
         template_number = config.getint('Registration Settings', 'Atlas Template number')
         if self.ui.comboBox_template.itemText(config.getint('Registration Settings', 'Atlas Template number')) == config.get('Registration Settings', 'Atlas Template text'):
             self.ui.comboBox_template.setCurrentIndex(template_number)
@@ -322,12 +323,13 @@ class PreProc(QtGui.QMainWindow):
                 self.currentImageIndex += 1
             else:
                 print "Processing stopped!"
-            self.ui.progressBar.setValue(0)
             self.progress()
+            self.ui.progressBar.setValue(0)            
             self.currentImageIndex = 0
             self.debugOutput("Done!", True)
-            self.script.close()
-            self.script = None
+            if self.script != None :
+                self.script.close()
+                self.script = None
             self.ui.b_start_proc.setEnabled(True)        
 
     def convertAndCheck(self, myFile):
