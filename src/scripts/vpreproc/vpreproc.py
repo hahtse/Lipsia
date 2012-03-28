@@ -186,7 +186,7 @@ class PreProc(QtGui.QMainWindow):
         if(not configFileName.isEmpty()):
             if not regExp.exactMatch(configFileName):
                 configFileName.append('.lpp')
-            with open(configFileName, 'wb') as configfile:
+            with open(configFileName, 'w') as configfile:
                 config.write(configfile)
         else:
            self.throwError("Please specify a filename")
